@@ -1,7 +1,7 @@
-NAME = prog
+NAME = Brain
 CXX = c++
-CXXFLAGS =  -Wall -Wextra -Werror -std=c++98
-src =  Dog.cpp Animal.cpp Cat.cpp main.cpp 
+CXXFLAGS =  -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+src = Brain.cpp main.cpp Animal.cpp Cat.cpp Dog.cpp
 
 OBJ = $(src:.cpp=.o)
 
