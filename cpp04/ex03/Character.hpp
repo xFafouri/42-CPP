@@ -6,11 +6,16 @@
 
 class Character : public ICharacter
 {
+    private:
+        std::string name;
     public:
         Character();
         Character(const Character &obj);
         Character &operator=(const Character &obj);
-        ~Character();
+        std::string const & getName() const override;
+        Character(std::string const & name);
+        // equipe unequipe use
+        virtual ~Character();
 };
 
 #endif 

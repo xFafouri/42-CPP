@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
+#include "Ice.hpp"
 class AMateria
 {
     protected:
-
+        std::string type;
     public:
         AMateria();
         AMateria(const AMateria &obj);
