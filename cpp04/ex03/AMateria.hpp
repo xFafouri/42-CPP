@@ -4,6 +4,9 @@
 #include <iostream>
 #include "ICharacter.hpp"
 #include "Ice.hpp"
+#include "Cure.hpp"
+
+
 class AMateria
 {
     protected:
