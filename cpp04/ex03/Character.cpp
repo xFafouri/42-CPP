@@ -1,11 +1,12 @@
 #include "Character.hpp"
+#include <cstddef>
 
 Character::Character()
 {
 
 }
 
-Character::Character(std::string const & name) :total(0), name(name) 
+Character::Character(std::string const & name) : name(name), total(0) 
 {
 
     int i = 0; 
@@ -18,6 +19,7 @@ Character::Character(std::string const & name) :total(0), name(name)
 
 Character::Character(const Character &obj)
 {
+    *this = obj;
 }
 
 Character &Character::operator=(const Character &obj)
@@ -34,17 +36,18 @@ Character &Character::operator=(const Character &obj)
 
 void	Character::equip(AMateria *m) 
 {
-	if (this->total == 4) 
+	if (this->total == 4)
     {
-		std::cout << "Inventory Full" << std::endl; 
+		std::cout << "Full inventory" << std::endl; 
         return;
 	}
 	for (int i = 0; i < 4; i++)
      {
 		if (this->inventory[i] == NULL) 
         {
-			this->inventory[i] = m;
-            std::cout << this->name << " succesfully equip AMateria " << m->getType() << " at index : " << i << std::endl; 
+            this->inventory[i] = m;
+            if (m != NULL)
+                std::cout << this->name << "equip AMateria " << m->getType() << " at index : " << i << std::endl; 
             break;
 		}
 	}
@@ -61,12 +64,14 @@ void	Character::unequip(int index)
      {
 		if (this->inventory[i] == this->inventory[index]) 
         {
-            this->inventory[i] = nullptr;
+            this->inventory[i] =  NULL;
+            this->total--;
             break;
 		}
 	}
-    this->total--;
 }
+
+
 
 void Character::use(int index, ICharacter& target)
 {
@@ -74,12 +79,20 @@ void Character::use(int index, ICharacter& target)
     {
         inventory[index]->use(target);
     }
+    else {
+        std::cout << "can't use it !" << std::endl;
+    }
 }
 
 std::string const& Character::getName() const
 {
     return name;
 }
-Character::~Character()
+Character::~Character() 
 {
+    for (int i = 0; i < 4; ++i) 
+    {
+        if (inventory[i])
+            delete inventory[i];
+    }
 }

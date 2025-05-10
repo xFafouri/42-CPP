@@ -3,6 +3,9 @@
 
 #include <iostream>
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
+class AMateria;
+class ICharacter;
 
 class Cure : public AMateria
 {

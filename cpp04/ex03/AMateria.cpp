@@ -2,6 +2,7 @@
 
 AMateria::AMateria()
 {
+    std::cout << "AMateria constructed!" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type)
@@ -27,6 +28,12 @@ std::string const &	AMateria::getType() const
 	return this->type;
 }
 
-AMateria::~AMateria()
+AMateria::~AMateria() 
 {
+    std::cout << "AMateria destructed!" << std::endl;
+
 }
+void AMateria::use(ICharacter& ) {
+    
+}
+

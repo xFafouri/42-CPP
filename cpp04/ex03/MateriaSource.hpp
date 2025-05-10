@@ -1,13 +1,14 @@
 #ifndef MATERIASOURCE_HPP
 #define MATERIASOURCE_HPP
 
+#include "AMateria.hpp"
 #include "IMateriaSource.hpp"
-#include "Ice.hpp"
-#include "Cure.hpp"
 #include <iostream>
 
+class AMateria;
+class IMateriaSource;
 
-class MateriaSource : IMateriaSource
+class MateriaSource : public IMateriaSource
 {
     private:
         AMateria* materias[4];
@@ -16,9 +17,9 @@ class MateriaSource : IMateriaSource
         MateriaSource();
         MateriaSource(const MateriaSource &obj);
         virtual void learnMateria(AMateria* m);
-        virtual AMateria* CreateMateria(std::string const & type);
+        virtual AMateria* createMateria(std::string const & type);
         MateriaSource &operator=(const MateriaSource &obj);
-        ~MateriaSource();
+        virtual ~MateriaSource();
 };
 
 #endif 

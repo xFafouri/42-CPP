@@ -2,10 +2,9 @@
 #define AMATERIA_HPP
 
 #include <iostream>
-#include "ICharacter.hpp"
-#include "Ice.hpp"
-#include "Cure.hpp"
 
+
+class ICharacter;
 
 class AMateria
 {
@@ -19,8 +18,8 @@ class AMateria
         AMateria(std::string const & type);
         std::string const & getType() const;
         virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
-        ~AMateria();
+        virtual void use(ICharacter&);
+        virtual ~AMateria();
 };
 
 #endif 

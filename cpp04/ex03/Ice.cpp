@@ -6,6 +6,7 @@ Ice::Ice() : AMateria("ice")
 
 Ice::Ice(const Ice &obj)
 {
+    *this = obj;
 }
 
 Ice &Ice::operator=(const Ice &obj)
@@ -19,7 +20,7 @@ Ice &Ice::operator=(const Ice &obj)
 
 AMateria* Ice::clone() const 
 {
-        return new Ice(); 
+        return new Ice(*this); 
 }
 
 void Ice::use(ICharacter& target) 
@@ -29,4 +30,5 @@ void Ice::use(ICharacter& target)
 
 Ice::~Ice()
 {
+    std::cout << "Ice destructed !!" << std::endl;
 }
