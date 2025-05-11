@@ -25,13 +25,19 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &obj)
 
 void MateriaSource::learnMateria(AMateria* m)  
 {
-    if (index < 4 && m) 
+    if(m)
     {
-        materias[index] = m;
-        // materias[index] = m->clone();
-        index++;
+        for(int i=0; i<4; i++)
+        {
+            if(this->materias[i]==NULL)
+            {
+                this->materias[i] = m->clone();
+                floor.liste_remove(this->materias[i]);
+                break;
+            }
+        }
     }
-}
+}   
 
 AMateria* MateriaSource::createMateria(std::string const & type) 
 {
@@ -50,8 +56,13 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 
 MateriaSource::~MateriaSource()
 {
-    for (int i = 0; i < index; ++i)
+    for(int i=0; i<4; i++)
     {
-        delete this->materias[i];
-    }
+        if(this->materias[i]!=NULL)
+        {
+            delete this->materias[i];
+            this->materias[i] = NULL;
+        }
+    } 
+    
 }

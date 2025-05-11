@@ -22,6 +22,12 @@ AMateria* Ice::clone() const
 {
         return new Ice(*this); 
 }
+void* Ice::operator new(size_t size){
+    std::cout<<"HERE:::"<<std::endl;
+    void *p = ::operator new(size);
+    floor.liste_add(floor.liste_New(p));
+    return p;
+}
 
 void Ice::use(ICharacter& target) 
 {

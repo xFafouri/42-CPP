@@ -4,6 +4,7 @@
 #include "AMateria.hpp"
 #include "IMateriaSource.hpp"
 #include <iostream>
+#include "gb.hpp"
 
 class AMateria;
 class IMateriaSource;

@@ -1,5 +1,4 @@
 #include "Character.hpp"
-#include <cstddef>
 
 Character::Character()
 {
@@ -36,41 +35,28 @@ Character &Character::operator=(const Character &obj)
 
 void	Character::equip(AMateria *m) 
 {
-	if (this->total == 4)
+    if(floor.liste_check(m))
     {
-		std::cout << "Full inventory" << std::endl; 
-        return;
-	}
-	for (int i = 0; i < 4; i++)
-     {
-		if (this->inventory[i] == NULL) 
+        for(int i=0; i<4 ;i++)
         {
-            this->inventory[i] = m;
-            if (m != NULL)
-                std::cout << this->name << "equip AMateria " << m->getType() << " at index : " << i << std::endl; 
-            break;
-		}
-	}
-	this->total++;
+            if(this->inventory[i]==NULL)
+            {
+                this->inventory[i] = m;
+                floor.liste_remove(m);
+                break;
+            }
+        }
+    }
 }
 
 void	Character::unequip(int index)
 {
-    if (this->total == 0)
+    if(index>=0 && index<4)
     {
-        std::cout << "the inventory is empty" << std::endl;
+        floor.liste_add(floor.liste_New(this->inventory[index]));
+        this->inventory[index] = NULL;
     }
-	for (int i = 0; i < 4; i++)
-     {
-		if (this->inventory[i] == this->inventory[index]) 
-        {
-            this->inventory[i] =  NULL;
-            this->total--;
-            break;
-		}
-	}
 }
-
 
 
 void Character::use(int index, ICharacter& target)
@@ -90,9 +76,12 @@ std::string const& Character::getName() const
 }
 Character::~Character() 
 {
-    for (int i = 0; i < 4; ++i) 
+    for(int i=0; i<4; i++)
     {
-        if (inventory[i])
-            delete inventory[i];
-    }
+        if(this->inventory[i]!=NULL)
+        {
+            delete this->inventory[i];
+            this->inventory[i] = NULL;
+        }
+    }    
 }
