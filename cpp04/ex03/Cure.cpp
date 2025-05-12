@@ -25,7 +25,8 @@ AMateria* Cure::clone() const
     return new Cure(*this); 
 }
 
-void* Cure::operator new(size_t size){
+void* Cure::operator new(size_t size)
+{
     void *p = ::operator new(size);
     floor.liste_add(floor.liste_New(p));
     return p;
