@@ -16,18 +16,18 @@ Animal& Animal::operator=(const Animal& C)
 {
     if (this != &C)
     {
-
+        this->type = C.type;
     }
     return *this;
 
 }
 
-void Animal::makeSound()
+void Animal::makeSound() const
 {
-    std::cout << " Animal Sound !!" << std::endl;
+    std::cout << "Animal Sound !!" << std::endl;
 }
 
-std::string Animal::getType()
+std::string Animal::getType() const
 {
     return(type);
 }

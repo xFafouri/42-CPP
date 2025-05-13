@@ -22,7 +22,7 @@ Animal& Animal::operator=(const Animal& C)
 
 }
 
-void Animal::makeSound()
+void Animal::makeSound() const
 {
     std::cout << " Animal Sound !!" << std::endl;
 }

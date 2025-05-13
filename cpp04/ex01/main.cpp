@@ -1,9 +1,3 @@
-
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-
-
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
@@ -22,10 +16,6 @@ int	main()
 
 	array[2]->makeSound();
 	array[6]->makeSound();
-    // Dog basicDog;
-    // {
-    //     Dog tmp = basicDog;
-    // } 
 	for (i = 0; i < 10; i++)
         delete array[i];
 	return 0;

@@ -19,11 +19,13 @@ Dog& Dog::operator=(const Dog& C)
     if (this != &C)
     {
         this->type = C.type;
+        if (this->brain)
+            delete this->brain;
+        this->brain = new Brain(*C.brain);
     }
     return *this;
 }
-
-std::string Dog::getType()
+std::string Dog::getType() const
 {
     return(type);
 }

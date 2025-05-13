@@ -18,17 +18,17 @@ Dog& Dog::operator=(const Dog& C)
 {
     if (this != &C)
     {
-
+        this->type = C.type;
     }
     return *this;
 }
 
-std::string Dog::getType()
+std::string Dog::getType() const
 {
     return(type);
 }
 
-void Dog::makeSound()
+void Dog::makeSound() const
 {
     std::cout << "HAW HAW !" << std::endl;
 }

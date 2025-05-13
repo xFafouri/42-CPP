@@ -19,7 +19,6 @@ Animal& Animal::operator=(const Animal& C)
         this->type = C.type;
     }
     return *this;
-
 }
 
 void Animal::makeSound()
@@ -27,7 +26,7 @@ void Animal::makeSound()
     std::cout << " Animal Sound !!" << std::endl;
 }
 
-std::string Animal::getType()
+std::string Animal::getType() const
 {
     return(type);
 }

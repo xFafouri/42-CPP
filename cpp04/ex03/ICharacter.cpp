@@ -1,3 +1,6 @@
 #include "ICharacter.hpp"
 
-ICharacter::~ICharacter(){};
+ICharacter::~ICharacter()
+{
+    std::cout << "ICharacter destructed!" << std::endl;
+};

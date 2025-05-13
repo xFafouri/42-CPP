@@ -15,18 +15,18 @@ Cat& Cat::operator=(const Cat& C)
 {
     if (this != &C)
     {
-
+        this->type = C.type;
     }
     return *this;
 
 }
 
-std::string Cat::getType()
+std::string Cat::getType() const
 {
     return(type);
 }
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
     std::cout << "Meow" << std::endl;
 }

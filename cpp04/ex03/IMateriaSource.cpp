@@ -1,3 +1,6 @@
 #include "IMateriaSource.hpp"
 
-IMateriaSource::~IMateriaSource() {};
+IMateriaSource::~IMateriaSource() 
+{
+    std::cout << "IMateriaSource destructed!" << std::endl;
+};

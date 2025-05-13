@@ -3,6 +3,7 @@
 
 Cure::Cure(): AMateria("cure")
 {
+    std::cout << "Cure constructed!" << std::endl;
     this->type = AMateria::type;
 }
 
@@ -23,13 +24,6 @@ Cure &Cure::operator=(const Cure &obj)
 AMateria* Cure::clone() const 
 {
     return new Cure(*this); 
-}
-
-void* Cure::operator new(size_t size)
-{
-    void *p = ::operator new(size);
-    floor.liste_add(floor.liste_New(p));
-    return p;
 }
 
 void Cure::use(ICharacter& target) 

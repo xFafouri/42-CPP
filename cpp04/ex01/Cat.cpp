@@ -19,12 +19,14 @@ Cat& Cat::operator=(const Cat& C)
     if (this != &C)
     {
         this->type = C.type;
+        if (this->brain)
+            delete this->brain;
+        this->brain = new Brain(*C.brain);
     }
     return *this;
-
 }
 
-std::string Cat::getType()
+std::string Cat::getType() const
 {
     return(type);
 }

@@ -4,7 +4,6 @@
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
 #include <iostream>
-#include "gb.hpp"
 
 class Character : public ICharacter
 {
@@ -12,6 +11,8 @@ class Character : public ICharacter
         std::string name;
         int			total;
         AMateria	*inventory[4];
+        AMateria* dropped[100];
+        int droppedCount;
     public:
         Character();
         Character(const Character &obj);

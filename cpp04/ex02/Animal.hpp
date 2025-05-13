@@ -1,8 +1,6 @@
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
-// Note that you can derive an abstract class from a nonabstract class, 
-//and you can override a non-pure virtual function with a pure virtual function
 # include <iostream>
 
 class Animal 

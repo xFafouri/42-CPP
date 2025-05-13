@@ -24,12 +24,12 @@ Cat& Cat::operator=(const Cat& C)
 
 }
 
-std::string Cat::getType()
+std::string Cat::getType() const
 {
     return(type);
 }
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
     std::cout << "Meow" << std::endl;
 }

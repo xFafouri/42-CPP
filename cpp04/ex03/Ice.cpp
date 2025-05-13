@@ -2,6 +2,8 @@
 
 Ice::Ice() : AMateria("ice")
 {
+    std::cout << "Ice constructed!" << std::endl;
+    this->type = AMateria::type;
 }
 
 Ice::Ice(const Ice &obj)
@@ -13,20 +15,14 @@ Ice &Ice::operator=(const Ice &obj)
 {
     if (this != &obj)
     {
-        
+        this->type = obj.type;
     }
     return *this;
 }
 
 AMateria* Ice::clone() const 
 {
-        return new Ice(*this); 
-}
-void* Ice::operator new(size_t size){
-    std::cout<<"HERE:::"<<std::endl;
-    void *p = ::operator new(size);
-    floor.liste_add(floor.liste_New(p));
-    return p;
+    return new Ice(*this); 
 }
 
 void Ice::use(ICharacter& target) 
