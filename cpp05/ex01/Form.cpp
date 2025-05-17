@@ -2,6 +2,7 @@
 
 Form::Form(std::string const name, int const gradeToSign, int const gradeToExecute) : name(name), gradeToSign(gradeToSign) , gradeToExecute(gradeToExecute)
 {
+    this->IsSigned = false;
     std::cout << "Form constructed !" << std::endl;
     if(this->gradeToSign < 1 || this->gradeToExecute < 1)
         throw Form::GradeTooHighException();
@@ -9,18 +10,19 @@ Form::Form(std::string const name, int const gradeToSign, int const gradeToExecu
         throw Form::GradeTooLowException();
 }
 
-// Form::Form(const Form &obj)
-// {
-// }
+Form::Form(const Form &obj): name(obj.getName()),IsSigned(false) , gradeToSign(obj.getGradeToSign()), gradeToExecute(obj.getGradeToSign())
+{
+	*this = obj;
+}
 
-// Form &Form::operator=(const Form &obj)
-// {
-//     if (this != &obj)
-//     {
-        
-//     }
-//     return *this;
-// }
+Form &Form::operator=(const Form &obj) 
+{
+    if (this != &obj)
+    {
+        this->IsSigned = obj.IsSigned;
+    }
+    return *this;
+}
 
 const char* Form::GradeTooHighException::what() const throw() 
 {
@@ -69,7 +71,7 @@ void Form::beSigned(Bureaucrat const &A)
 std::ostream &operator<<(std::ostream &out, const Form &obj)
 {
     out << obj.getName() << ", Form grade to sign : " << obj.getGradeToSign() 
-    << "Form status : " << obj.getGradeToSign()
+    << "Form status : " << obj.getIsSigned()
     << ", Form grade to execute : " << obj.getGradeToExecute();
     return out;
 }

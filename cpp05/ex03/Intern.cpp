@@ -3,20 +3,18 @@
 
 Intern::Intern()
 {
+    std::cout << "Intern Constructed !" << std::endl;
 }
 
-// Intern::Intern(const Intern &obj)
-// {
-// }
+Intern::Intern(const Intern &obj)
+{
+    *this = obj;
+}
 
-// Intern &Intern::operator=(const Intern &obj)
-// {
-//     if (this != &obj)
-//     {
-        
-//     }
-//     return *this;
-// }
+Intern &Intern::operator=(const Intern &obj)
+{
+    return *this;
+}
 
 AForm* Intern::makeForm(std::string FormName, std::string targetForm)
 {
@@ -32,7 +30,6 @@ AForm* Intern::makeForm(std::string FormName, std::string targetForm)
             break;
         }
     }
-
     switch (j) 
     {
         case(0):
@@ -47,8 +44,7 @@ AForm* Intern::makeForm(std::string FormName, std::string targetForm)
     return NULL;
 }
 
-
 Intern::~Intern()
 {
-
+    std::cout << "Intern denstructed !" << std::endl;
 }

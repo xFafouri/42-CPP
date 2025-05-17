@@ -15,8 +15,8 @@ class Form
         const int gradeToExecute;  
     public:
         Form(std::string const name, int const gradeToSign, int const gradeToExecute);
-        // Form(const Form &obj);
-        // Form &operator=(const Form &obj);
+        Form(const Form &obj);
+        Form &operator=(const Form &obj);
         void beSigned(Bureaucrat const &);
 
         //exception

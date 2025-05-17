@@ -16,8 +16,8 @@ class AForm
         std::string  const target;
     public:
         AForm(std::string const name, int const gradeToSign, int const gradeToExecute, std::string const target);
-        // AForm(const AForm &obj);
-        // AForm &operator=(const AForm &obj);
+        AForm(const AForm &obj);
+        AForm &operator=(const AForm &obj);
         void beSigned(Bureaucrat const &A);
 
         //exception

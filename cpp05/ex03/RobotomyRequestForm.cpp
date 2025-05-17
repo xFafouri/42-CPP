@@ -7,10 +7,11 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const target)
     std::cout << "RobotomyRequestForm constructed !" << std::endl;
 }
 
-// RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm(obj)
-// {
-//
-// }
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm(obj)
+{
+    *this = obj;
+}
 
 void RobotomyRequestForm::executeAction() const
 {
