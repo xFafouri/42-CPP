@@ -1,7 +1,7 @@
 NAME = AForm
 CXX = c++
-CXXFLAGS =  -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
-src = AForm.cpp main.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp
+CXXFLAGS =  -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
+src = AForm.cpp main.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJ = $(src:.cpp=.o)
 

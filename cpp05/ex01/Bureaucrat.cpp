@@ -109,6 +109,7 @@ void Bureaucrat::signForm(Form &A)
    }
 }
 
+
 // std::string Bureaucrat::GradeTooHighException()
 // {
 //     try

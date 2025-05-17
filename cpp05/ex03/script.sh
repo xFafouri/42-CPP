@@ -54,10 +54,12 @@ cat > $sourceFile << EOF
 
 $class::$class()
 {
+    std::cout << "$class destructed !" << std::endl;
 }
 
 $class::$class(const $class &obj)
 {
+    *this = obj
 }
 
 $class &$class::operator=(const $class &obj)
@@ -71,5 +73,6 @@ $class &$class::operator=(const $class &obj)
 
 $class::~$class()
 {
+    std::cout << "$class destructed !" << std::endl;
 }
 EOF

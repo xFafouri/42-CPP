@@ -1,6 +1,7 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
-AForm::AForm(std::string const name, int const gradeToSign, int const gradeToExecute) : name(name), gradeToSign(gradeToSign) , gradeToExecute(gradeToExecute)
+AForm::AForm(std::string const name, int const gradeToSign, int const gradeToExecute, std::string const target) 
+    : name(name), gradeToSign(gradeToSign) , gradeToExecute(gradeToExecute), target(target)
 {
     std::cout << "AForm constructed !" << std::endl;
     if(this->gradeToSign < 1 || this->gradeToExecute < 1)
@@ -32,6 +33,10 @@ const char* AForm::GradeTooLowException::what() const throw()
     return "Grade too Low!";
 }
 
+const char* AForm::FormNotSignedException::what() const throw() 
+{
+    return "Form Not Signed!";
+}
 //Getter
 std::string AForm::getName() const
 {
@@ -40,13 +45,13 @@ std::string AForm::getName() const
 
 std::string AForm::getTarget() const
 {
-    return (name);
+    return (target);
 }
 
-void AForm::setTarget(std::string target)
-{
-    this->target = target;
-}
+// void AForm::setTarget(std::string target)
+// {
+//     this->target = target;
+// }
 
 bool AForm::getIsSigned() const
 {
@@ -86,5 +91,5 @@ std::ostream &operator<<(std::ostream &out, const AForm &obj)
 
 AForm::~AForm()
 {
-    std::cout << "Form destructed !" << std::endl;
+    std::cout << "AForm destructed !" << std::endl;
 }
