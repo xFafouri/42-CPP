@@ -14,8 +14,10 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
 {
+    (void)other;
     return (*this);
 }
+
 void PresidentialPardonForm::executeAction() const
 {
     std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;

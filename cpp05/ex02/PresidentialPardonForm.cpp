@@ -7,10 +7,16 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const target)
     std::cout << "PresidentialPardonForm constructed !" << std::endl;
 }
 
-// PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj) : AForm(obj)
-// {
-//
-// }
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj) : AForm(obj)
+{
+    *this = obj;
+}
+
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
+{
+    (void)other;
+    return (*this);
+}
 
 void PresidentialPardonForm::executeAction() const
 {

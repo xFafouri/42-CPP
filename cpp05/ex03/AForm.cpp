@@ -11,7 +11,7 @@ AForm::AForm(std::string const name, int const gradeToSign, int const gradeToExe
         throw AForm::GradeTooLowException();
 }
 
-AForm::AForm(const AForm &obj): name(obj.getName()) ,IsSigned(getIsSigned()) , gradeToSign(obj.getGradeToSign()), gradeToExecute(obj.getGradeToSign()) , target(obj.getTarget())
+AForm::AForm(const AForm &obj): name(obj.getName()) ,IsSigned(getIsSigned()) , gradeToSign(obj.getGradeToSign()), gradeToExecute(obj.getGradeToExecute()) , target(obj.getTarget())
 {
 	*this = obj;
 }

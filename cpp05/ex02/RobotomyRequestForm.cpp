@@ -7,13 +7,21 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const target)
     std::cout << "RobotomyRequestForm constructed !" << std::endl;
 }
 
-// RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm(obj)
-// {
-//
-// }
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : AForm(obj)
+{
+    *this = obj;
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
+{
+    (void)other;
+    return (*this);
+}
 
 void RobotomyRequestForm::executeAction() const
 {
+    std::cout << "*Some drilling noise*" << std::endl;
     if (rand() % 2 == 0)
     {
         std::cout << getTarget() << " has been robotomized successfully 50\% of the time." << std::endl;
@@ -39,5 +47,5 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-    // std::cout << "RobotomyRequestForm destructed !" << std::endl;
+    std::cout << "RobotomyRequestForm destructed !" << std::endl;
 }

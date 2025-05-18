@@ -13,6 +13,7 @@ Intern::Intern(const Intern &obj)
 
 Intern &Intern::operator=(const Intern &obj)
 {
+    (void)obj;
     return *this;
 }
 

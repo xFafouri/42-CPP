@@ -9,7 +9,8 @@ int main()
         A.decrementGrade();
         std::cout << "After decrement: " << A << std::endl;
     }
-    catch (std::exception &e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
+    catch (std::exception &e) 
+    {
+        std::cerr << "exception: " << e.what() << std::endl;
     }
 }

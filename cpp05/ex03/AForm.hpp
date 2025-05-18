@@ -46,7 +46,6 @@ class AForm
         int getGradeToExecute() const;
         std::string getName() const;
         std::string getTarget() const;
-        // void setTarget(std::string target);
         virtual ~AForm();
 };
 

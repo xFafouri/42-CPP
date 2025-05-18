@@ -6,8 +6,9 @@ Bureaucrat::Bureaucrat(std::string const name , int grade) : name (name) , grade
     std::cout << "Bureaucrat constructed!" << std::endl;
     if(this->grade < 1)
         throw GradeTooHighException();
-    if(this->grade > 150)
+    else if(this->grade > 150)
         throw GradeTooLowException();
+
 }
 Bureaucrat::Bureaucrat(const Bureaucrat &obj) : name(obj.name), grade(obj.grade)
 {
