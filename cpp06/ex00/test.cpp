@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
-
+#include <cmath>
+#include <limits.h>
 int main() {
 
-    int n = 5;
+    char n = 'd';
 
-    double nd = static_cast<double>(n);
+    float nd = static_cast<float>(n);
 
     std::cout << nd << std::endl;
 

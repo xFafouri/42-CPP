@@ -1,5 +1,7 @@
 #include "ScalarConverter.hpp"
 #include <cctype>
+#include <iomanip>
+#include <ios>
 
 ScalarConverter::ScalarConverter()
 {
@@ -46,7 +48,6 @@ bool isFloat(const std::string& str)
         return false;
 
     std::string tmp = str.substr(0, str.length() - 1);
-    std::cout <<"tmp :" << tmp << std::endl; 
     int dotCount = 0;
     int i = 0;
 
@@ -108,44 +109,60 @@ void ScalarConverter::convert(const std::string& literal)
     {
         char c = literal[0];
         std::cout << "int: " << static_cast<int>(c) <<  std::endl;
-        std::cout << "float: " << static_cast<float>(c) << "f" << std::endl;
+        std::cout << "float: " << static_cast<float>(c)  << std::endl;
         std::cout << "double: " << static_cast<double>(c) <<  std::endl;
+        
     }
-    else if(isFloat(literal))
+    else if(isFloat(literal) || literal == "-inff" || literal == "+inff" || literal == "nanf")
     {
+        if (literal == "-inff" || literal == "+inff" || literal == "nanf")
+        {
+            std::cout << "char :" << " impossible" << std::endl; 
+            std::cout << "double :" << " impossible" << std::endl; 
+            std::cout << "int :" << " impossible" << std::endl;
+            std::cout <<  "float : "  << literal << std::endl;
+            return ;
+        }
         // if (check_dot_digit(literal, is_dot) && literal[literal.length() - 1] == 'f' && literal.find('.') != std::string::npos)
         float f = std::stof(literal);
-
         if (std::isprint(static_cast<char>(f)))
             std::cout << "char: " << static_cast<char>(f) << std::endl;
         else
             std::cout << "char: Non displayable" << std::endl;
-        std::cout << "double :" << static_cast<double>(f) << std::endl;
+        std::cout << "double :" << std::fixed << std::setprecision(2) << static_cast<double>(f) << std::endl;
         std::cout << "int:" << static_cast<int>(f) << std::endl;
     }
-    else if (isDouble(literal))
+    else if (isDouble(literal) || literal == "-inf" || literal == "+inf" || literal == "nan")
     {
         // else if (check_dot_digit(literal, is_dot) && literal.find('.') != std::string::npos)
+        if (literal == "-inf" || literal == "+inf" || literal == "nan")
+        {
+            std::cout << "char :" << " impossible" << std::endl; 
+            std::cout << "float : "  << "impossible" << std::endl;
+            std::cout << "int :" << " impossible" << std::endl;
+            std::cout << "double : " << literal << std::endl; 
+            return ;
+        }
         double d = std::stod(literal);
 
         if (std::isprint(static_cast<char>(d)))
             std::cout << "char: " << static_cast<char>(d) << std::endl;
         else
             std::cout << "char: Non displayable" << std::endl;
-        std::cout << "float :" << static_cast<float>(d) << 'f' << std::endl;
+        std::cout << "float :" << std::fixed << std::setprecision(2) << static_cast<float>(d) << 'f' << std::endl;
         std::cout << "int:" << static_cast<int>(d) << std::endl;
     }
     else if (isDigit(literal))
     {
         int i = std::atoi(literal.c_str());
-
+        std::cout << "sad" << std::endl;
         if (std::isprint(static_cast<char>(i)))
             std::cout << "char: " << static_cast<char>(i) << std::endl;
         else
             std::cout << "char: Non displayable" << std::endl;
-        std::cout << "float :" << static_cast<float>(i) << 'f' << std::endl;
-        std::cout << "double:" << static_cast<double>(i) << std::endl;
-    } 
+        std::cout << "float :"<< std::fixed << std::setprecision(2) << static_cast<float>(i) << 'f' << std::endl;
+        std::cout << "double:" << std::fixed << std::setprecision(2)  << static_cast<double>(i) << std::endl;
+    }
 }
 
 ScalarConverter::~ScalarConverter()

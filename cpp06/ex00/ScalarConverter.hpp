@@ -6,6 +6,7 @@
 #include <ctype.h>
 #include <cstdlib> 
 #include <cctype>
+
 class ScalarConverter
 {
     private:
@@ -15,5 +16,6 @@ class ScalarConverter
         static void convert(const std::string &literal);
 
 };
+
 
 #endif 
