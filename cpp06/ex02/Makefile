@@ -1,7 +1,7 @@
-NAME = Serializer
+NAME = Cast
 CXX = c++
 CXXFLAGS =  -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
-src = Serializer.cpp main.cpp Data.cpp
+src = A.cpp B.cpp Base.cpp C.cpp main.cpp
 
 OBJ = $(src:.cpp=.o)
 

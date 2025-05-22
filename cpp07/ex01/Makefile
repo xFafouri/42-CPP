@@ -1,7 +1,7 @@
-NAME = Serializer
+NAME = Iter
 CXX = c++
 CXXFLAGS =  -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
-src = Serializer.cpp main.cpp Data.cpp
+src = main.cpp
 
 OBJ = $(src:.cpp=.o)
 
