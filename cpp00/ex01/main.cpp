@@ -49,7 +49,7 @@ int main()
         }
         if (command == "SEARCH")
         {
-            std::cout << std::setw(10) << "Index" << "|";
+            std::cout << std::setw(10)<< "Index" << "|";
             std::cout << std::setw(10) << "First name" << "|"; 
             std::cout << std::setw(10) << "Last name" << "|";
             std::cout << std::setw(10) << "Nick name" << "|" << std::endl;

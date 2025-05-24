@@ -22,7 +22,6 @@ class Contact
         void setdarkset_secret(std::string darkset_secret);
         void    display_contact(int index);
         void    display_by_index();
-    
 };
 
 #endif

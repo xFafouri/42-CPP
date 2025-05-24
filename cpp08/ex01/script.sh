@@ -59,7 +59,7 @@ $class::$class()
 
 $class::$class(const $class &obj)
 {
-    *this = obj
+    *this = obj;
 }
 
 $class &$class::operator=(const $class &obj)
@@ -76,3 +76,13 @@ $class::~$class()
     std::cout << "$class destructed !" << std::endl;
 }
 EOF
+
+cat > $mainFile << EOF
+#include "$headerFile"
+
+int main()
+{
+
+}
+EOF
+
