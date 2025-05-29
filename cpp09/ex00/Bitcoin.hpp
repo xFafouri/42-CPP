@@ -8,8 +8,8 @@
 #include <fstream>
 #include <iomanip>
 #include <sstream>
-#include <iostream>
 #include <string>
+#include <algorithm>
 class Bitcoin
 {
     public:
@@ -24,6 +24,12 @@ class Bitcoin
         void AddToContainer(std::string date, float value);
         void fill_DataBase();
         void display_map();
+        int parsing_input(std::string str, std::string number);
+        bool manage_error(std::string str, std::string number);
+        void searchInMap();
+        float dd;
+        float mm;
+        float yy;
         Bitcoin &operator=(const Bitcoin &obj);
         ~Bitcoin();
 };
