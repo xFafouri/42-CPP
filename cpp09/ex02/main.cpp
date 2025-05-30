@@ -41,73 +41,50 @@ int main(int ac , char **av)
         std::cout << "{" << it->first << ", " << it->second
              << "}" << std::endl;
     }
-    //sort the pairs depend the largest element 
+    //sort the pairs depend the pend element 
     // std::vector<std::pair<int, int> >::iterator iter = A.pairs.begin();
     // 
 
 
-    // display largest
-    std::cout << "***largest**" << std::endl; 
-    std::vector<int>::iterator itt = A.largest.begin();
-    for(; itt != A.largest.end(); itt++)
+    // display pend
+    std::cout << "***pend**" << std::endl; 
+    std::vector<int>::iterator itt = A.pend.begin();
+    for(; itt != A.pend.end(); itt++)
     {
         std::cout << *itt << " | ";
     }
     std::cout << "\n";
 
-    //display lowest 
-    std::cout << "***lowest**" << std::endl; 
-    std::vector<int>::iterator iter = A.lowest.begin();
-    for(; iter != A.lowest.end(); iter++)
+    //display main_chain 
+    std::cout << "***main_chain**" << std::endl; 
+    std::vector<int>::iterator iter = A.main_chain.begin();
+    for(; iter != A.main_chain.end(); iter++)
     {
         std::cout << *iter << " | ";
     }
     std::cout << "\n";
 
     //fil jacob_sequence
-    // make a flag vector for the largest vector with a pair of int and bool 
+    // make a flag vector for the pend vector with a pair of int and bool 
     // inizialze the bool with false
     A.initialize_flag_vec();
     // display the flag_vec
 
-    // for (size_t i = 0; i < A.flag_vec.size(); ++i)
-    // {
-    //     std::cout << "number = " << A.flag_vec[i].first << " | " << A.flag_vec[i].second << std::endl;
-    // }
-
-    // std::cout << "jacob number = " << A.getJacobsthal(4) << std::endl;
-    // A.fill_jacob_sequence();
-    // std::cout << "***jacob sequence**" << std::endl; 
-    // std::vector<int>::iterator jacob = A.jacob_sequence.begin();
-    // for(; jacob != A.jacob_sequence.end(); jacob++)
-    // {
-    //     std::cout << *jacob << std::endl;
-    // }
-
     // binary search
-        //divide the largest by 2
-        //sort first the lowest
-    // std::vector<int>::iterator iy = A.lowest.begin();
-    // std::sort(iy , A.lowest.end());
-    // std::cout << "***sorted lowest**" << std::endl; 
-    // std::vector<int>::iterator iit = A.lowest.begin();
-    // for(; iit != A.lowest.end(); iit++)
-    // {
-    //     std::cout << *iit << " | ";
-    // }
-    // std::cout << "\n";qazwsxedcrfvbgy
+        //divide the pend by 2
+        //sort first the main_chain
 
     A.insert_by_index();
-    std::cout << "***sorted**" << std::endl; 
-    std::vector<int>::iterator iterator = A.lowest.begin();
-    for(; iterator != A.lowest.end(); iterator++)
+    std::cout << "***main_chain after sorted**" << std::endl; 
+    std::vector<int>::iterator iterator = A.main_chain.begin();
+    for(; iterator != A.main_chain.end(); iterator++)
     {
         std::cout << *iterator << std::endl;
     }
 
-    // std::cout << "***largest**" << std::endl; 
-    // std::vector<int>::iterator iy = A.largest.begin();
-    // for(; iy != A.largest.end(); iy++)
+    // std::cout << "***pend**" << std::endl; 
+    // std::vector<int>::iterator iy = A.pend.begin();
+    // for(; iy != A.pend.end(); iy++)
     // {
     //     std::cout << *iy << std::endl;
     // }
