@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <vector>
 
 
 PmergeMe::PmergeMe()
@@ -29,39 +30,15 @@ bool PmergeMe::is_all_digits(std::string& str)
     }
     return true;
 }
-void PmergeMe::binary_search() 
-{
-    for (std::vector<int>::iterator it = lowest.begin(); it != lowest.end(); ++it) 
-    {
-        // Find the insertion point in 'largest' using binary search
-        std::vector<int>::iterator pos = std::lower_bound(largest.begin(), largest.end(), *it);
-        // Insert the element in the correct sorted position
-        largest.insert(pos, *it);
-    }
-}
 
-// void PmergeMe::binary_search()
+// void PmergeMe::binary_search() 
 // {
-//     std::vector<int>::iterator itt = largest.begin();
-//     for(unsigned long i = 0; i < largest.size() / 2; i++)
+//     for (std::vector<int>::iterator it = lowest.begin(); it != lowest.end(); ++it) 
 //     {
-//         itt++;
-//         // std::cout << *itt << std::endl;
-//     }
-//     // size_t i = 0;
-//     // for (; i + 1 < largest.size() / 2; i += 2)
-//     // {
-//     //     itt++;
-//     //     // largest.push_back(it->first);
-//     //     // it++;
-//     // }
-//     if (lowest.begin() < itt && itt != lowest.end() && lowest.begin() < itt++)
-//     {
-//         for(unsigned long i = 0; i < largest.size() / 4; i++)
-//         {
-//             itt++;
-//         // std::cout << *itt << std::endl;
-//         }
+//         // Find the insertion point in 'largest' using binary search
+//         std::vector<int>::iterator pos = std::lower_bound(largest.begin(), largest.end(), *it);
+//         // Insert the element in the correct sorted position
+//         largest.insert(pos, *it);
 //     }
 // }
 
@@ -85,7 +62,7 @@ void::PmergeMe::fill_largest()
     }
 }
 
-void::PmergeMe::fill_lowest()
+void PmergeMe::fill_lowest()
 {
     std::vector<std::pair<int, int> >::iterator it = pairs.begin();
     for (;it != pairs.end(); it++)
@@ -99,6 +76,111 @@ void::PmergeMe::fill_lowest()
         }
     }
 }
+
+// void PmergeMe::fill_jacob_sequence() 
+// {
+//     int j0 = 0;
+//     int j1 = 1;
+
+//     jacob_sequence.push_back(j1);
+//     while (1)
+//     {
+//         unsigned long next = j1 + 2 * j0;
+//         if (next >= largest.size())
+//             break;
+//         jacob_sequence.push_back(next);
+//         j0 = j1;
+//         j1 = next;
+//     }
+// }
+
+int PmergeMe::getJacobsthal(int n)
+{
+    if (n == 0) 
+        return 0;
+    if (n == 1)
+        return 1;
+
+    int j0 = 0;
+    int j1 = 1;
+    int jn;
+    for (int i = 2; i <= n; i++) 
+    {
+        jn = j1 + 2 * j0;
+        j0 = j1;
+        j1 = jn;
+    }
+    return j1;
+}
+
+void PmergeMe::initialize_flag_vec()
+{
+    flag_vec.resize(largest.size());
+    for (size_t i = 0; i < largest.size(); ++i)
+    {
+        flag_vec[i].first = largest[i];
+        flag_vec[i].second = false;
+    }
+}
+
+void PmergeMe::binary_insert(int pend)
+{
+    int low = 0;
+    int high = lowest.size();
+    while(low < high)
+    {
+        int mid = (low + high) / 2;
+        if (pend < lowest[mid])
+        {
+            high = mid;
+        }
+        else
+        {
+            low = mid + 1;
+        }
+    }
+    // now low == high
+    std::cout << "position : " << *lowest.begin() + low << std::endl;
+    lowest.insert(lowest.begin() + low, pend);
+}
+
+
+void PmergeMe::insert_by_index()
+{
+    int jac_index = 1;
+    std::cout << "**** insert***" << std::endl;
+    while (1) 
+    {
+        unsigned long j = getJacobsthal(jac_index);
+        std::cout << "jacobsthal number " << j << std::endl;
+        if (j >= largest.size())
+            break;
+        if (!flag_vec[j].second) 
+        {
+            std::cout << flag_vec[j].first << " => send it to binary insert" << std::endl;
+            // Binary insert flag_vec[j].second into sorted chain
+            binary_insert(flag_vec[j].first);
+            flag_vec[j].second = true;
+        }
+        jac_index++;
+    }
+    for (int i = flag_vec.size() - 1; i >= 0; i--) 
+    {
+        if (!flag_vec[i].second) 
+        {
+            binary_insert(flag_vec[i].first);
+            flag_vec[i].second = true;
+        }
+    }
+}
+
+
+//     for (int i = pendFlags.size() - 1; i >= 0; --i) {
+//     if (!pendFlags[i].second) {
+//         // Binary insert pend[i] into sorted chain
+//         pendFlags[i].second = true; // mark as inserted
+//     }
+// }
 
 
 void PmergeMe::fill_in_pair()
@@ -132,6 +214,7 @@ bool PmergeMe::check_arg(std::string arg)
     std::cout << "token = *" << token << "*" << std::endl;
     return true;
 }
+
 
 void PmergeMe::display()
 {

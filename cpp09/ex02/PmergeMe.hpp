@@ -13,6 +13,8 @@ class PmergeMe
         std::vector<std::pair<int, int> > pairs;
         std::vector<int> largest;
         std::vector<int> lowest;
+        std::vector<int> jacob_sequence;
+        std::vector<std::pair<int, bool> > flag_vec;
 
         int token;
         int struggle;
@@ -25,6 +27,11 @@ class PmergeMe
         void fill_in_pair();
         void fill_largest();
         void fill_lowest();
+        // void fill_jacob_sequence();
+        void initialize_flag_vec();
+        void binary_insert(int pend);
+        void insert_by_index();
+        int getJacobsthal(int n);
         void binary_search();
         PmergeMe &operator=(const PmergeMe &obj);
         ~PmergeMe();

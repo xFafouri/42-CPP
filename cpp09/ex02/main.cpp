@@ -47,30 +47,71 @@ int main(int ac , char **av)
 
 
     // display largest
-
     std::cout << "***largest**" << std::endl; 
     std::vector<int>::iterator itt = A.largest.begin();
     for(; itt != A.largest.end(); itt++)
     {
-        std::cout << *itt << std::endl;
+        std::cout << *itt << " | ";
     }
+    std::cout << "\n";
+
     //display lowest 
     std::cout << "***lowest**" << std::endl; 
     std::vector<int>::iterator iter = A.lowest.begin();
     for(; iter != A.lowest.end(); iter++)
     {
-        std::cout << *iter << std::endl;
+        std::cout << *iter << " | ";
     }
+    std::cout << "\n";
+
+    //fil jacob_sequence
+    // make a flag vector for the largest vector with a pair of int and bool 
+    // inizialze the bool with false
+    A.initialize_flag_vec();
+    // display the flag_vec
+
+    // for (size_t i = 0; i < A.flag_vec.size(); ++i)
+    // {
+    //     std::cout << "number = " << A.flag_vec[i].first << " | " << A.flag_vec[i].second << std::endl;
+    // }
+
+    // std::cout << "jacob number = " << A.getJacobsthal(4) << std::endl;
+    // A.fill_jacob_sequence();
+    // std::cout << "***jacob sequence**" << std::endl; 
+    // std::vector<int>::iterator jacob = A.jacob_sequence.begin();
+    // for(; jacob != A.jacob_sequence.end(); jacob++)
+    // {
+    //     std::cout << *jacob << std::endl;
+    // }
+
     // binary search
         //divide the largest by 2
-    A.binary_search();
-    std::cout << "***after binary**" << std::endl; 
-    std::vector<int>::iterator iterr = A.largest.begin();
-    for(; iterr != A.largest.end(); iterr++)
+        //sort first the lowest
+    // std::vector<int>::iterator iy = A.lowest.begin();
+    // std::sort(iy , A.lowest.end());
+    // std::cout << "***sorted lowest**" << std::endl; 
+    // std::vector<int>::iterator iit = A.lowest.begin();
+    // for(; iit != A.lowest.end(); iit++)
+    // {
+    //     std::cout << *iit << " | ";
+    // }
+    // std::cout << "\n";qazwsxedcrfvbgy
+
+    A.insert_by_index();
+    std::cout << "***sorted**" << std::endl; 
+    std::vector<int>::iterator iterator = A.lowest.begin();
+    for(; iterator != A.lowest.end(); iterator++)
     {
-        std::cout << *iterr << std::endl;
+        std::cout << *iterator << std::endl;
     }
 
+    // std::cout << "***largest**" << std::endl; 
+    // std::vector<int>::iterator iy = A.largest.begin();
+    // for(; iy != A.largest.end(); iy++)
+    // {
+    //     std::cout << *iy << std::endl;
+    // }
+    
     // A.vector.insert(std::pair<int,  int>())
     // A.display();
 }
