@@ -1,11 +1,14 @@
 #include "PmergeMe.hpp"
 #include <algorithm>
+#include <iomanip>
 #include <utility>
 
 
 
 int main(int ac , char **av)
 {
+    clock_t start_time = 0;
+    clock_t end_time;
     PmergeMe A;
     int i = 1;
     if (ac < 2)
@@ -29,6 +32,7 @@ int main(int ac , char **av)
     }
     if (A.vector.size() % 2 != 0)
     {
+        A.is_struggle = true;
         std::cout << "struggle = " << A.struggle << std::endl;
         A.vector.pop_back();   
     }
@@ -41,10 +45,6 @@ int main(int ac , char **av)
         std::cout << "{" << it->first << ", " << it->second
              << "}" << std::endl;
     }
-    //sort the pairs depend the pend element 
-    // std::vector<std::pair<int, int> >::iterator iter = A.pairs.begin();
-    // 
-
 
     // display pend
     std::cout << "***pend**" << std::endl; 
@@ -69,26 +69,26 @@ int main(int ac , char **av)
     // inizialze the bool with false
     A.initialize_flag_vec();
     // display the flag_vec
-
     // binary search
         //divide the pend by 2
         //sort first the main_chain
 
     A.insert_by_index();
+    if (A.is_struggle)
+    {
+        A.binary_insert(A.struggle);
+    }
+
+    end_time = clock();
+
+    // Calculate duration in seconds
+    double duration = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+    std::cout << "Operation took "  << duration << " seconds." << std::endl;
+    
     std::cout << "***main_chain after sorted**" << std::endl; 
     std::vector<int>::iterator iterator = A.main_chain.begin();
     for(; iterator != A.main_chain.end(); iterator++)
     {
         std::cout << *iterator << std::endl;
     }
-
-    // std::cout << "***pend**" << std::endl; 
-    // std::vector<int>::iterator iy = A.pend.begin();
-    // for(; iy != A.pend.end(); iy++)
-    // {
-    //     std::cout << *iy << std::endl;
-    // }
-    
-    // A.vector.insert(std::pair<int,  int>())
-    // A.display();
 }

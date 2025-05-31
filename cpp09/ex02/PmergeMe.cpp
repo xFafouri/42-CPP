@@ -130,7 +130,7 @@ void PmergeMe::binary_insert(int insert_value)
         }
     }
     // now low == high
-    std::cout << "position : " << *main_chain.begin() + low << std::endl;
+    std::cout << "position : " << low << std::endl;
     main_chain.insert(main_chain.begin() + low, insert_value);
 }
 
@@ -138,15 +138,15 @@ void PmergeMe::binary_insert(int insert_value)
 void PmergeMe::insert_by_index()
 {
     int jac_index = 1;
-    std::cout << "**** insert***" << std::endl;
+    // std::cout << "**** insert***" << std::endl;
     while (1) 
     {
         unsigned long j = getJacobsthal(jac_index);
-        std::cout << "jacobsthal number " << j << std::endl;
         if (j >= pend.size())
             break;
         if (!flag_vec[j].second) 
         {
+            std::cout << "jacobsthal number " << j << std::endl;
             std::cout << flag_vec[j].first << " => send it to binary insert" << std::endl;
             // Binary insert flag_vec[j].second into sorted chain
             binary_insert(flag_vec[j].first);
@@ -158,19 +158,13 @@ void PmergeMe::insert_by_index()
     {
         if (!flag_vec[i].second) 
         {
+            std::cout << flag_vec[i].first << " => send it to binary insert" << std::endl;
+
             binary_insert(flag_vec[i].first);
             flag_vec[i].second = true;
         }
     }
 }
-
-
-//     for (int i = pendFlags.size() - 1; i >= 0; --i) 
-//     if (!pendFlags[i].second) {
-//         // Binary insert main_chain[i] into sorted chain
-//         pendFlags[i].second = true; // mark as inserted
-//     }
-// }
 
 
 void PmergeMe::fill_in_pair()
@@ -192,10 +186,8 @@ void PmergeMe::fill_in_pair()
 
 bool PmergeMe::check_arg(std::string arg)
 {
-    // std::cout << "arg" << arg <<std::endl;
     if (!is_all_digits(arg))
     {
-        // std::cout << "**********" << std::endl;
         return false;
     }
     token = std::strtof(arg.c_str(), NULL);
